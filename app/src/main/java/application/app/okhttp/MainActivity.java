@@ -13,6 +13,7 @@ import java.util.List;
 
 import application.app.okhttp.bean.AdviceBean;
 import application.app.okhttp.constant.AddressContants;
+import application.app.okhttp.generallist.GeneralListActivity;
 import application.app.okhttp.http.JsonCallback;
 import application.app.okhttp.http.LzyResponse;
 import application.app.okhttp.permission.MPermission;
@@ -23,7 +24,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private final int BASIC_PERMISSION_REQUEST_CODE = 100;
-    private TextView post_tv;
+    private TextView post_tv, list_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,17 @@ public class MainActivity extends AppCompatActivity {
         requestBasicPermission();
 
         post_tv = (TextView) findViewById(R.id.post_tv);
+        list_tv = (TextView) findViewById(R.id.list_tv);
         post_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getListData(false, "1");
+            }
+        });
+        list_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GeneralListActivity.startAction(getApplicationContext());
             }
         });
     }
